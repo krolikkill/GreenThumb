@@ -48,8 +48,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ['label' => 'Главная', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'nav-link']],
                 ['label' => 'Каталог', 'url' => ['/plant/index'], 'linkOptions' => ['class' => 'nav-link']],
                 ['label' => 'Контакты', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link']],
+                ['label' => 'Кабинет', 'url' => ['/cabinet/index'], 'linkOptions' => ['class' => 'nav-link']],
                 ['label' => 'Форум', 'url' => ['/forum/index'], 'linkOptions' => ['class' => 'nav-link']],
-
                 Yii::$app->user->isGuest
                     ? ['label' => 'Войти', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'nav-link']]
                     : '<li class="nav-item">'

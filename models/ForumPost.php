@@ -61,16 +61,20 @@ class ForumPost extends \yii\db\ActiveRecord
     }
 
     // в модели ForumPost
-    public function beforeSave($insert)
+
+
+    public function behaviors()
     {
-        if (parent::beforeSave($insert)) {
-            if ($this->isNewRecord) {
-                $this->created_at = date('Y-m-d H:i:s');
-            }
-            $this->updated_at = date('Y-m-d H:i:s');
-            return true;
-        }
-        return false;
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+
+            ],
+        ];
     }
 
     /**
@@ -92,4 +96,6 @@ class ForumPost extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+
+
 }

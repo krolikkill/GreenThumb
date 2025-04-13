@@ -33,6 +33,7 @@ $this->beginPage();
         'items' => [
             ['label' => 'Растения', 'url' => ['/admin/plant/index'], 'linkOptions' => ['class' => 'nav-link']],
             ['label' => 'Категории', 'url' => ['/admin/category/index'], 'linkOptions' => ['class' => 'nav-link']],
+            ['label' => 'Категории', 'url' => ['/admin/category_forum/index'], 'linkOptions' => ['class' => 'nav-link']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Войти', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'nav-link']]
             ) : (

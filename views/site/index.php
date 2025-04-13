@@ -103,7 +103,7 @@ $this->title = 'GreenThumb - Советы для садоводов';
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <h1 class="display-4 mb-4" style="color: var(--dark-green); font-family: 'Playfair Display', serif;">
-                    <i class="fas fa-seedling mr-3"></i>GreenThumb
+                    <i class="fas fa-leaf"></i>GreenThumb
                 </h1>
                 <p class="lead mb-5">
                     Ваш персональный гид в мире садоводства. Советы, рекомендации и секреты выращивания растений от опытных садоводов.

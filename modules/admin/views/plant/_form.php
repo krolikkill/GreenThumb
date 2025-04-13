@@ -3,7 +3,11 @@ use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Category;
+
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+
 
 <div class="plant-form">
     <div class="card">

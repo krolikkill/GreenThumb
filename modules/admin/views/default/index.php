@@ -7,12 +7,10 @@
     </div>
     <div class="card">
         <h2>Категории</h2>
-        <a href="<?= \yii\helpers\Url::to(['/admin/category']) ?>" class="btn btn-primary">Управление</a>
+        <a href="<?= \yii\helpers\Url::to(['/admin/category/index']) ?>" class="btn btn-primary">Управление</a>
     </div>
-    <div class="card">
-        <h2>Пользователи</h2>
-        <a href="<?= \yii\helpers\Url::to(['/admin/user']) ?>" class="btn btn-primary">Управление</a>
-    </div>
+
+
 </div>
 
 <style>

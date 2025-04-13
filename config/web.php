@@ -20,6 +20,16 @@ $config = [
     'components' => [
         'assetManager' => [
             'bundles' => [
+                'yii\jui\JuiAsset' => [
+                    'sourcePath' => null,
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/jquery-ui@1.12.1',
+                    'js' => [
+                        'jquery-ui.min.js',
+                    ],
+                    'css' => [
+                        'themes/smoothness/jquery-ui.min.css',
+                    ],
+                ],
                 'yii\bootstrap5\BootstrapAsset' => [
                     'css' => ['https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'],
                     'js' => ['https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js']
@@ -33,11 +43,14 @@ $config = [
                 'plants' => 'plant/index',
                 'plants/<id:\d+>' => 'plant/view',
                 'forum/category/<id:\d+>' => 'forum/category',
-                'forum/topic/<id:\d+>' => 'forum-topic/view',
-                'forum/topic/create/<category_id:\d+>' => 'forum-topic/create',
                 'forum' => 'forum/index',
-
-                // ... другие правила
+                'cabinet' => 'cabinet/index',
+                'cabinet/add-plant' => 'cabinet/add-plant',
+                'cabinet/plant/<id:\d+>' => 'cabinet/view-plant',
+                'cabinet/add-care-log/<plant_id:\d+>' => 'cabinet/add-care-log',
+                'cabinet/profile' => 'cabinet/profile',
+                'cabinet/update-care-log/<id:\d+>' => 'cabinet/update-care-log',
+                'cabinet/delete-care-log/<id:\d+>' => 'cabinet/delete-care-log',
             ],
         ],
         'as access' => [

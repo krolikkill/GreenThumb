@@ -1,27 +1,47 @@
-<h1>Мои растения</h1>
-
-<?php foreach ($plants as $plant): ?>
-    <div class="plant-card">
-        <h3><?= Html::encode($plant->nickname) ?></h3>
-        <p>Последний полив: <?= $plant->last_watered ? date('d.m.Y', strtotime($plant->last_watered)) : 'Никогда' ?></p>
-        <?= Html::a('Добавить напоминание', ['add-reminder', 'plantId' => $plant->id], ['class' => 'btn btn-primary']) ?>
-    </div>
-<?php endforeach; ?>
 <?php
-use yii\widgets\ActiveForm;
-use yii\helpers\Html;
 
-$form = ActiveForm::begin();
-echo $form->field($model, 'type')->dropDownList([
-    'water' => 'Полив',
-    'fertilize' => 'Удобрение'
-]);
-echo $form->field($model, 'frequency_days')->input('number');
-echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
-ActiveForm::end();
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\ListView;
+
 ?>
-<?php foreach ($plant->seasonalAdvice as $advice): ?>
-<div class="alert alert-info">
-    <strong>Сезонный совет:</strong> <?= Html::encode($advice->advice) ?>
+
+<div class="cabinet-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card profile-card">
+                <div class="card-body text-center">
+                    <div class="profile-avatar">
+                    </div>
+                    <h4><?= Html::encode(Yii::$app->user->identity->username) ?></h4>
+                    <p class="text-muted">Участник
+                        с <?= Yii::$app->formatter->asDate(Yii::$app->user->identity->created_at) ?></p>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Мои растения</h4>
+                    <a href="<?= Url::to(['add-plant']) ?>" class="btn btn-success btn-sm">
+                        <i class="fas fa-plus"></i> Добавить растение
+                    </a>
+                </div>
+
+                <div class="card-body">
+                    <?= ListView::widget([
+                        'dataProvider' => $dataProvider,
+                        'itemView' => '_plant-item',
+                        'emptyText' => '<div class="alert alert-info">У вас пока нет растений в коллекции. <a href="' . Url::to(['add-plant']) . '">Добавьте первое растение</a>.</div>',
+                        'layout' => "{items}\n{pager}",
+                        'options' => ['class' => 'row'],
+                        'itemOptions' => ['class' => 'col-md-4 mb-4'],
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<?php endforeach; ?>

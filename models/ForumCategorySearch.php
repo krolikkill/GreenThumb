@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Category;
+use app\models\ForumCategory;
 
 /**
- * CategorySearch represents the model behind the search form of `app\models\Category`.
+ * ForumCategorySearch represents the model behind the search form of `app\models\forum`.
  */
-class CategorySearch extends Category
+class ForumCategorySearch extends ForumCategory
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class CategorySearch extends Category
     {
         return [
             [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['title', 'description', 'created_at'], 'safe'],
         ];
     }
 
@@ -31,7 +31,6 @@ class CategorySearch extends Category
         return Model::scenarios();
     }
 
-
     /**
      * Creates data provider instance with search query applied
      *
@@ -41,7 +40,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+        $query = ForumCategory::find();
 
         // add conditions that should always apply here
 
@@ -60,9 +59,11 @@ class CategorySearch extends Category
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }
